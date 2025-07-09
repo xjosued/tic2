@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida - Kevin Azitimbay</title>
+    <style>
+        /* Estilos generales minimalistas */
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y limpia */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Fondo blanco-gris muy claro */
+            color: #343a40; /* Texto gris oscuro */
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 0; /* Más padding vertical */
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap'); /* Para el nombre, si se busca un toque distinto */
+
+
+        .container {
+            max-width: 800px; /* Ancho ligeramente menor para un diseño más compacto */
+            width: 90%;
+            background-color: #ffffff;
+            border-radius: 10px; /* Bordes ligeramente más suaves */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra más sutil */
+            padding: 35px; /* Menos padding interno */
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 30px; /* Menos margen inferior */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif; /* Fuente más elegante para el nombre */
+            font-size: 3em; /* Tamaño ajustado */
+            color: #212529; /* Casi negro para el nombre */
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .profile-pic {
+            width: 140px; /* Un poco más pequeña */
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e9ecef; /* Borde muy sutil */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* Sombra aún más discreta */
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1em;
+            color: #495057; /* Gris un poco más oscuro */
+            margin-bottom: 6px;
+            font-weight: 400; /* Menos negrita */
+        }
+
+        .location-age {
+            font-size: 0.9em;
+            color: #6c757d; /* Gris medio */
+        }
+
+        /* Secciones */
+        .section {
+            margin-bottom: 25px; /* Margen inferior ajustado */
+        }
+
+        /* Títulos de sección con icono y subrayado */
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5em; /* Tamaño ajustado */
+            font-weight: 600; /* Menos negrita que antes, pero sigue destacando */
+            color: #212529; /* Casi negro */
+            padding-bottom: 6px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #dee2e6; /* Línea más fina y clara */
+        }
+        .section-title img {
+            margin-right: 10px; /* Margen más pequeño */
+            width: 25px; /* Iconos un poco más pequeños */
+            height: 25px;
+            filter: invert(10%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(30%) contrast(100%); /* Iconos en gris oscuro casi negro */
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 7px; /* Espacio ajustado */
+            padding-left: 20px; /* Menos padding izquierdo */
+            position: relative;
+            font-size: 0.95em;
+            color: #495057;
+        }
+
+        ul li::before {
+            content: '•';
+            color: #adb5bd; /* Puntos de lista en gris claro */
+            font-size: 1.1em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .education-details strong {
+            color: #343a40;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .education-details p {
+            margin: 0 0 3px 0;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        /* Habilidades e Intereses como "tags" */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; /* Espacio más pequeño entre tags */
+            margin-top: 8px;
+        }
+
+        .tag-item {
+            padding: 7px 12px; /* Padding ajustado */
+            border-radius: 15px; /* Bordes más redondeados */
+            font-size: 0.85em; /* Tamaño de fuente más pequeño */
+            font-weight: 400; /* Menos negrita */
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra muy ligera */
+            transition: transform 0.1s ease, box-shadow 0.1s ease; /* Transición más rápida */
+        }
+        .tag-item:hover {
+            transform: translateY(-1px); /* Menos movimiento */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra ligeramente más pronunciada */
+        }
+
+        /* Colores específicos para los tags (tonos más suaves y neutros) */
+        .tag-skill {
+            background-color: #e9ecef; /* Gris muy claro */
+            color: #495057; /* Gris oscuro */
+        }
+        .tag-interest {
+            background-color: #f0f2f5; /* Un gris aún más claro */
+            color: #6c757d; /* Gris medio */
+        }
+
+        /* Media Queries para adaptabilidad */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .section-title {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .section-title {
+                font-size: 1.1em;
+            }
+            .tag-item {
+                font-size: 0.75em;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Kevin Azitimbay</h1>
+            <img src="kv.jpg" alt="Foto de Perfil de Kevin Azitimbay" class="profile-pic">
+            <p class="subtitle">Estudiante de Medicina Veterinaria | Interés en manejo de ganado y salud preventiva animal</p>
+            <p class="location-age">Riobamba, Ecuador</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/graduation-cap.png" alt="Icono de Formación Académica">
+                Formación Académica
+            </h2>
+            <div class="education-details">
+                <p><strong>Medicina Veterinaria</strong></p>
+                <p>Universidad Regional Autónoma de los Andes (UNIANDES) — Ambato, Ecuador</p>
+                <ul>
+                    <li>Formación integral en ciencias básicas veterinarias: anatomía, fisiología, histología y bioquímica.</li>
+                    <li>Participación activa en prácticas de laboratorio, observación clínica y actividades extracurriculares.</li>
+                    <li>Interés enfocado en el manejo de ganado, producción animal y salud preventiva en animales de granja.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/target.png" alt="Icono de Objetivo Profesional">
+                Objetivo Profesional
+            </h2>
+            <ul>
+                <li>Como futuro médico veterinario, mi propósito es especializarme en el cuidado, manejo y producción de ganado.</li>
+                <li>Me motiva contribuir al desarrollo rural, la salud animal y el mejoramiento genético de especies de interés pecuario.</li>
+                <li>Aspiro a aplicar mis conocimientos con responsabilidad, ética y compromiso, promoviendo el bienestar animal y la eficiencia productiva.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/flask.png" alt="Icono de Experiencia Académica">
+                Experiencia Académica y Prácticas
+            </h2>
+            <p><strong>Prácticas de laboratorio – UNIANDES</strong></p>
+            <ul>
+                <li>Manejo de microscopía óptica y técnicas de tinción (hematoxilina-eosina, azul de metileno).</li>
+                <li>Análisis histológico de tejidos animales.</li>
+                <li>Aplicación rigurosa de normas de bioseguridad en entornos clínicos y de laboratorio.</li>
+            </ul>
+            <p><strong>Proyectos académicos destacados</strong></p>
+            <ul>
+                <li>Observación comparativa de células bucales y células de cebolla bajo microscopio.</li>
+                <li>Análisis estructural y funcional de epitelios en distintos órganos.</li>
+                <li>Cálculo de presión osmótica mediante la ecuación de Van’t Hoff.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/wrench.png" alt="Icono de Habilidades">
+                Habilidades
+            </h2>
+            <div class="tag-list">
+                <span class="tag-item tag-skill">Manejo básico de ganado en campo (vacuno y porcino)</span>
+                <span class="tag-item tag-skill">Identificación de signos clínicos en animales de granja</span>
+                <span class="tag-item tag-skill">Conducción de motocicletas en terreno rural</span>
+                <span class="tag-item tag-skill">Capacidad de adaptación a trabajos físicos y al aire libre</span>
+                <span class="tag-item tag-skill">Comunicación efectiva con equipos de trabajo en el área pecuaria</span>
+                <span class="tag-item tag-skill">Resolución práctica de problemas en situaciones de campo</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <img src="https://img.icons8.com/ios-filled/30/puzzle.png" alt="Icono de Intereses">
+                Intereses
+            </h2>
+            <div class="tag-list">
+                <span class="tag-item tag-interest">Producción y manejo de ganado bovino y porcino</span>
+                <span class="tag-item tag-interest">Medicina preventiva en animales de granja</span>
+                <span class="tag-item tag-interest">Motociclismo y deportes extremos al aire libre</span>
+                <span class="tag-item tag-interest">Rehabilitación y nutrición en animales de trabajo</span>
+                <span class="tag-item tag-interest">Innovación tecnológica aplicada al sector agropecuario</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
